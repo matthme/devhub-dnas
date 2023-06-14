@@ -1,6 +1,6 @@
 [package]
 name = "web_assets_core"
-version = "0.3.0-beta-dev.2"
+version = "0.3.0-beta-dev.4"
 authors = ["Matthew Brisebois <matthew.brisebois@holo.host>"]
 edition = "2018"
 
