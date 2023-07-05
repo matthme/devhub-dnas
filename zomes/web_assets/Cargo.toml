@@ -13,7 +13,7 @@ devhub_types = {path = "../../devhub_types"}
 web_assets_core = {path = "../web_assets_core"}
 hc_crud_ceps = "0.78.0"
 mere_memory_types = "0.85.0"
-hdk = "0.3.0-beta-dev.4"
+hdk = "0.3.0-beta-dev.7"
 serde = "1"
 serde_yaml = "0.8.17"
 thiserror = "1"
