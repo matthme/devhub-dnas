@@ -15,7 +15,7 @@ hc_crud_ceps = { git = "https://github.com/matthme/rust-hc-crud-ceps", branch = 
 
 hdk = "0.2.1-beta-rc.0"
 hex = "0"
-mere_memory_types = "0.86.0"
+mere_memory_types = { git = "https://github.com/matthme/hc-zome-mere-memory", branch = "holochain-0.2.1-beta-rc.0" }
 serde = "1"
 serde_yaml = "0.8.17"
 thiserror = "1"
