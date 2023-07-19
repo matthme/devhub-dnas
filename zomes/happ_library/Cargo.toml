@@ -1,6 +1,6 @@
 [package]
 name = "happ_library"
-version = "0.3.0-beta-dev.7"
+version = "0.2.1-beta-rc.0"
 authors = ["Matthew Brisebois <matthew.brisebois@holo.host>"]
 edition = "2018"
 
@@ -11,8 +11,9 @@ crate-type = ["cdylib", "rlib"]
 [dependencies]
 devhub_types = {path = "../../devhub_types"}
 happs_core = {path = "../happs_core"}
-hc_crud_ceps = "0.79.0"
-hdk = "0.3.0-beta-dev.7"
+hc_crud_ceps = { git = "https://github.com/matthme/rust-hc-crud-ceps", branch = "holochain-0.2.1-beta-rc.0" }
+
+hdk = "0.2.1-beta-rc.0"
 hex = "0"
 mere_memory_types = "0.86.0"
 serde = "1"
