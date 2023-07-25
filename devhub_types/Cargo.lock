@@ -515,7 +515,7 @@ dependencies = [
 
 [[package]]
 name = "devhub_types"
-version = "0.2.1-beta-rc.0"
+version = "0.2.1"
 dependencies = [
  "essence_payloads",
  "flate2",
