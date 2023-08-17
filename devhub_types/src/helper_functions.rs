@@ -55,7 +55,7 @@ where
     T: IntoIterator,
     T::Item: std::fmt::Display,
     ScopedLinkType: TryFrom<LT, Error = E>,
-    WasmError: From<E>, 
+    WasmError: From<E>,
 {
     let result = create_path( base, segments );
     result.0.to_owned().typed( link_type )?.ensure()?;
@@ -218,7 +218,7 @@ where
 pub fn get_hdk_versions<LT,E>( link_type: LT ) -> AppResult<Vec<String>>
 where
     ScopedLinkType: TryFrom<LT, Error = E>,
-    WasmError: From<E>, 
+    WasmError: From<E>,
 {
     let (hdkv_path, _) = create_path( ANCHOR_HDK_VERSIONS, Vec::<String>::new() );
 
