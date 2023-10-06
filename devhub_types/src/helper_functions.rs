@@ -74,11 +74,14 @@ where
     debug!("Getting all {:?} [{}] entities: {}", link_type, fmt_tag( &tag ), fmt_path( &path ) );
 
     let path_hash = path.path_entry_hash().unwrap();
-    let links = get_links(
-        path_hash.clone(),
-	link_type,
-	tag.map( |tag| LinkTag::new( tag ) ),
-    )?;
+    let links = get_links( GetLinksInput {
+        base_address: path_hash.clone().into(),
+        link_type: link_type.try_into_filter()?,
+        tag_prefix: tag.map( |tag| LinkTag::new( tag ) ),
+        after: None,
+        before: None,
+        author: None
+    })?;
 
     let list = links.into_iter()
 	.filter_map(|link| {
@@ -115,11 +118,14 @@ where
     let (base_path, base_hash) = create_path( ANCHOR_HDK_VERSIONS, vec![ &hdk_version ] );
 
     debug!("Getting entities with tag '{:?}' and HDK Version '{}': {}", link_type, hdk_version, fmt_path( &base_path ) );
-    let links = get_links(
-        base_hash.clone(),
-	link_type,
-	None
-    )?;
+    let links = get_links( GetLinksInput {
+        base_address: base_hash.clone().into(),
+        link_type: link_type.try_into_filter()?,
+        tag_prefix: None,
+        after: None,
+        before: None,
+        author: None
+    })?;
 
     let list = links.into_iter()
 	.filter_map(|link| {
@@ -142,11 +148,14 @@ where
     let (base_path, base_hash) = create_path( ANCHOR_FILTERS, vec![ &filter, &keyword ] );
 
     debug!("Getting '{:?}' links for filter: {} => {:?}", link_type, fmt_path( &base_path ), base_path );
-    let links = get_links(
-        base_hash.clone(),
-	link_type,
-	None
-    )?;
+    let links = get_links( GetLinksInput {
+        base_address: base_hash.clone().into(),
+        link_type: link_type.try_into_filter()?,
+        tag_prefix: None,
+        after: None,
+        before: None,
+        author: None
+    })?;
 
     let list = links.into_iter()
 	.filter_map(|link| {
@@ -182,11 +191,14 @@ where
 	let (base, base_hash) = create_path( ANCHOR_TAGS, vec![ &tag_name.to_lowercase() ] );
 
 	debug!("Getting '{:?}' links for tag '{}': {} => {:?}", link_type, tag_name, fmt_path( &base ), base );
-	let links = get_links(
-            base_hash.clone(),
-	    link_type.to_owned(),
-	    None
-	)?;
+    let links = get_links( GetLinksInput {
+        base_address: base_hash.clone().into(),
+        link_type: link_type.clone().try_into_filter()?,
+        tag_prefix: None,
+        after: None,
+        before: None,
+        author: None
+    })?;
 
 	for link in links {
 	    if let Some((count, _)) = match_count.get_mut( &link.target ) {
@@ -260,11 +272,14 @@ where
     for rm_tag in prev_tags.difference( &new_tags ) {
 	let (tag_path, tag_hash) = ensure_path( ANCHOR_TAGS, vec![ &rm_tag.to_lowercase() ], tag_link_type.to_owned() )?;
 
-	let links = get_links(
-	    tag_hash.clone(),
-	    link_type.to_owned(),
-	    None
-	)?;
+    let links = get_links( GetLinksInput {
+        base_address: tag_hash.clone().into(),
+        link_type: link_type.clone().try_into_filter()?,
+        tag_prefix: None,
+        after: None,
+        before: None,
+        author: None
+    })?;
 
 	debug!("Removing tag link: {}", fmt_path( &tag_path ) );
 	if let Some(link) = links.iter().find(|link| {

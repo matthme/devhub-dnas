@@ -11,11 +11,11 @@ crate-type = ["cdylib", "rlib"]
 [dependencies]
 devhub_types = {path = "../../devhub_types"}
 happs_core = {path = "../happs_core"}
-hc_crud_caps = { git = "https://github.com/matthme/rust-hc-crud-caps", branch = "lair-keystore-0.3.0" }
+hc_crud_caps = { git = "https://github.com/matthme/rust-hc-crud-caps", branch = "holochain-0.3.0-beta-dev.20" }
 hdk = { git = "https://github.com/holochain/holochain", rev = "f5270601c1a489086fed853812e1326726210dfd" }
 hex = "0"
-mere_memory_types = { git = "https://github.com/matthme/hc-zome-mere-memory", branch = "lair-keystore-0.3.0" }
-serde = "1"
+mere_memory_types = { git = "https://github.com/matthme/hc-zome-mere-memory", branch = "holochain-0.3.0-beta-dev.20" }
+serde = ">1.0.166"
 serde_yaml = "0.8.17"
 thiserror = "1"
 

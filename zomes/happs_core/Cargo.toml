@@ -10,9 +10,9 @@ crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 devhub_types = {path = "../../devhub_types"}
-hc_crud_caps = { git = "https://github.com/matthme/rust-hc-crud-caps", branch = "lair-keystore-0.3.0" }
+hc_crud_caps = { git = "https://github.com/matthme/rust-hc-crud-caps", branch = "holochain-0.3.0-beta-dev.20" }
 hex = "0"
-serde = "1"
+serde = ">1.0.166"
 serde_yaml = "0.8.17"
 thiserror = "1"
 whi_hdi_extensions = "0.2.1"
